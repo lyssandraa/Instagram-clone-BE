@@ -3,15 +3,21 @@ const express = require("express");
 
 const port = process.env.PORT || 5001;
 
+const User = require("./users/model");
+const userRouter = require("./users/routes");
+
 const app = express();
 
 app.use(express.json());
+app.use("/users", userRouter);
 
 app.get("/health", (req, res) => {
   res.status(200).json({ message: "API is healthy" });
 });
 
-const syncTables = async () => {};
+const syncTables = async () => {
+  await User.sync({ alter: true });
+};
 
 app.listen(port, () => {
   syncTables();
