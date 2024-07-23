@@ -1,8 +1,10 @@
 const { Router } = require("express");
 const userRouter = Router();
 
-const {} = require("./controllers");
-const {} = require("../middleware/auth");
+const { signup } = require("./controllers");
+const { hashPass } = require("../middleware/auth");
 const { compare } = require("bcrypt");
+
+userRouter.post("", hashPass, signup);
 
 module.exports = userRouter;
