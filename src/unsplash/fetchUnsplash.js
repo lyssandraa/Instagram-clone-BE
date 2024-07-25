@@ -2,7 +2,7 @@ require("dotenv").config();
 
 const fetchUnsplash = async () => {
   const response = await fetch(
-    `https://api.unsplash.com/photos/?page=1&limit9&client_id=${process.env.UNSPLASH_CLIENT_ID}`
+    `https://api.unsplash.com/photos/?page=1&per_page=9&client_id=${process.env.UNSPLASH_CLIENT_ID}`
   );
 
   const data = await response.json();
