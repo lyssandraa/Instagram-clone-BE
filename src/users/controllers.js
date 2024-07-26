@@ -14,7 +14,7 @@ const signup = async (req, res) => {
     } else {
       res
         .status(500)
-        .json({ message: "Internal server error", error: err.message });
+        .json({ message: "Internal server error", err: err.message });
     }
   }
 };
