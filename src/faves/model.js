@@ -16,6 +16,13 @@ const Fave = sequelize.define(
     photographer_name: {
       type: DataTypes.STRING,
     },
+    UserId: {
+      type: DataTypes.INTEGER,
+      references: {
+        model: "Users",
+        key: "id",
+      },
+    },
   },
   { timestamps: false }
 );
