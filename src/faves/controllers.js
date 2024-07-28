@@ -4,7 +4,10 @@ const User = require("../users/model");
 const addFave = async (req, res) => {
   try {
     const fave = await Fave.create({
-      photo: req.body.photo,
+      imageId: req.body.imageId,
+      imageUrls: req.body.imageUrls,
+      likes: req.body.likes,
+      photographer_name: req.body.photographer_name,
       UserId: req.body.userId,
     });
     res.status(201).json({ message: "Photo added to favourite", fave });
@@ -15,7 +18,7 @@ const addFave = async (req, res) => {
 
 const getFaves = async (req, res) => {
   try {
-    const faves = await Fave.findAll({ where: { UserId: req.user.id } });
+    const faves = await Fave.findAll({ where: { UserId: req.query.userId } });
     res.status(200).json({ message: "success", faves });
   } catch (err) {
     res.status(500).json({ message: err.message, err: err });
